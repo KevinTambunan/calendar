@@ -15,8 +15,15 @@ class EventController extends Controller
      */
     public function index()
     {
-        $data = ['Kevin'];
-        return Inertia::render('Calendar', $data);
+        $header = "Get all data success!";
+        $code = "400";
+        $data = Event::all();
+
+        return Inertia::render('Calendar', [
+            "Code" => $code,
+            "Message" =>  $header,
+            "data" => $data
+        ]);
     }
 
     /**
