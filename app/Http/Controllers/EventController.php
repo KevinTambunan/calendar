@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EventCollection;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -17,7 +18,7 @@ class EventController extends Controller
     {
         $header = "Get all data success!";
         $code = "400";
-        $data = Event::all();
+        $data = new EventCollection(Event::paginate(10));
 
         return Inertia::render('Calendar', [
             "Code" => $code,
