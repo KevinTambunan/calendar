@@ -32,3 +32,9 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/calendar', [EventController::class, 'index']);
+Route::get('/addNew', [EventController::class, 'create']);
+Route::post('/addNew', [EventController::class, 'store']);
+
+
+// events
+Route::get('/events', [EventController::class, 'index']);

@@ -20,7 +20,7 @@ class EventController extends Controller
         $code = "400";
         $data = new EventCollection(Event::paginate(10));
 
-        return Inertia::render('Calendar', [
+        return Inertia::render('Event', [
             "Code" => $code,
             "Message" =>  $header,
             "data" => $data
@@ -34,7 +34,7 @@ class EventController extends Controller
      */
     public function create()
     {
-
+        return Inertia::render('Create');
     }
 
     /**
@@ -45,7 +45,15 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new Event();
+        $event->title = $request->title;
+        $event->date = $request->date;
+        $event->description = $request->description;
+        $event->image = 0;
+        $event->is_popup = true;
+        $event->save();
+
+        return redirect('/calendar')->with('message', 'berhasil tambah baru');
     }
 
     /**
