@@ -20,7 +20,7 @@ class EventController extends Controller
         $code = "400";
         $data = new EventCollection(Event::paginate(10));
 
-        return Inertia::render('Event', [
+        return Inertia::render('Calendar', [
             "Code" => $code,
             "Message" =>  $header,
             "data" => $data
@@ -62,9 +62,16 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        //
+        //get data
+        $events = Event::all();
+        $data = $events->find($id);
+
+        return Inertia::render('Edit', [
+            'header' => 'Edit Data',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -73,9 +80,17 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit($id, Request $request)
     {
-        //
+        Event::where('id', $id)->update(
+            [
+                'title' => $request->title,
+                'description' => $request->description,
+                'date' => $request->date
+            ]
+            );
+
+        return redirect('/calendar')->with('message', 'Berhasil update');
     }
 
     /**

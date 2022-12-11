@@ -1,3 +1,6 @@
+import React from "react"
+import { Link } from "@inertiajs/inertia-react"
+
 const rowTable = (datas) => {
     return datas.map((data, i) => {
         return (
@@ -26,6 +29,7 @@ const rowTable = (datas) => {
                     <span className="badge badge-ghost badge-sm">{data.date}</span>
                 </td>
                 <th>
+                    <Link className="mr-2" href={`/edit/${data.id}`}>Ubah</Link>
                     <button className="btn btn-ghost btn-xs">details</button>
                 </th>
             </tr>
@@ -34,7 +38,7 @@ const rowTable = (datas) => {
 }
 
 const DataTable = ({ datas }) => {
-    console.log(datas)
+    // console.log(datas)
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">

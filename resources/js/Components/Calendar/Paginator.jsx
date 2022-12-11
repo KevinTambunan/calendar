@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/inertia-react";
 
 const Paginator = ({ datas }) => {
-    console.log(datas)
+    // console.log(datas)
     const current = datas.current_page;
     const prev = datas.links[current - 1].url
     const next = datas.links[current + 1].url

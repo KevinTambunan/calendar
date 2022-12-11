@@ -27,6 +27,6 @@
         "tailwindcss": "^3.0.18"
     },
     "dependencies": {
-        "daisyui": "^2.42.1"
+        "daisyui": "^2.43.0"
     }
 }

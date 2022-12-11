@@ -34,6 +34,8 @@ require __DIR__.'/auth.php';
 Route::get('/calendar', [EventController::class, 'index']);
 Route::get('/addNew', [EventController::class, 'create']);
 Route::post('/addNew', [EventController::class, 'store']);
+Route::get('/edit/{id}', [EventController::class, 'show']);
+Route::post('/edit/{id}', [EventController::class, 'edit']);
 
 
 // events
