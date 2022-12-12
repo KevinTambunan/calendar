@@ -94,15 +94,17 @@ class EventController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * detail the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function detail($id)
     {
-        //
+        $events = Event::all();
+        $event = $events->find($id);
+
+        return Inertia::render('Detail', $event);
     }
 
     /**

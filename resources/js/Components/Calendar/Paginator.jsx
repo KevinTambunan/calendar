@@ -7,9 +7,9 @@ const Paginator = ({ datas }) => {
     const next = datas.links[current + 1].url
     return (
         <div className="btn-group">
-            {prev && <Link href={prev} className="btn btn-accent">«</Link>}
-            <button className="btn">{current}</button>
-            {next && <Link href={next} className="btn">»</Link>}
+            {prev && <Link href={prev} className="btn btn-outline btn-accent">«</Link>}
+            <button className="btn btn-ghost">{current}</button>
+            {next && <Link href={next} className="btn btn-outline btn-accent">»</Link>}
         </div>
     )
 }

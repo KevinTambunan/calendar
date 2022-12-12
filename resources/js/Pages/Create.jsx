@@ -21,12 +21,14 @@ const Create = () => {
     }
 
     return (
-        <div className="flex justify-center min-h-screen form-group">
-            <form>
-                <input type="text" placeholder="Title" className="flex-1 input w-full" onChange={(title) => {setTitle(title.target.value)}}/>
-                <input type="text" placeholder="Deskripsi" className="flex-1 input w-full" onChange={(description) => {setDescription(description.target.value)}}/>
-                <input type="date" placeholder="Type here" className="flex-1 input w-full" onChange={(date) => {setDate(date.target.value)}}/>
-                <button className="btn btn-outline" type="button" onClick={() => handleSubmit()}>Submit</button>
+        <div className="justify-center">
+
+            <form className="flex m-40 p-10 rounded-3xl gap-4 bg-slate-300">
+                <input type="text" placeholder="Title" className="w-64 input" onChange={(title) => {setTitle(title.target.value)}}/>
+                <textarea className="textarea textarea-bordered flex-1 w-72 h-32" placeholder="Deskripsi" onChange={(description) => {setDescription(description.target.value)}}></textarea>
+                {/* <input type="text" placeholder="Deskripsi" className=" input" onChange={(description) => {setDescription(description.target.value)}}/> */}
+                <input type="date" placeholder="Type here" className="flex-2 w-64 input" onChange={(date) => {setDate(date.target.value)}}/>
+                <button className="btn btn-primary" type="button" onClick={() => handleSubmit()}>Submit</button>
             </form>
         </div>
     )
