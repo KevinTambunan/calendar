@@ -27,6 +27,10 @@
         "tailwindcss": "^3.0.18"
     },
     "dependencies": {
-        "daisyui": "^2.43.0"
+        "@fullcalendar/core": "^6.0.1",
+        "@fullcalendar/daygrid": "^6.0.1",
+        "@fullcalendar/react": "^6.0.1",
+        "daisyui": "^2.43.0",
+        "react-icons": "^4.7.1"
     }
 }

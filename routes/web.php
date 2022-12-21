@@ -31,13 +31,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/calendar', [EventController::class, 'index']);
-Route::get('/addNew', [EventController::class, 'create']);
-Route::post('/addNew', [EventController::class, 'store']);
-Route::get('/edit/{id}', [EventController::class, 'show']);
-Route::post('/edit/{id}', [EventController::class, 'edit']);
-Route::get('/detail/{id}', [EventController::class, 'detail']);
+Route::get('/calendar', [EventController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/addNew', [EventController::class, 'create'])->middleware(['auth', 'verified']);
+Route::post('/addNew', [EventController::class, 'store'])->middleware(['auth', 'verified']);
+Route::get('/edit/{id}', [EventController::class, 'show'])->middleware(['auth', 'verified']);
+Route::post('/edit/{id}', [EventController::class, 'edit'])->middleware(['auth', 'verified']);
+Route::get('/detail/{id}', [EventController::class, 'detail'])->middleware(['auth', 'verified']);
 
 
 // events
-Route::get('/events', [EventController::class, 'index']);
+Route::get('/events', [EventController::class, 'events'])->middleware(['auth', 'verified']);

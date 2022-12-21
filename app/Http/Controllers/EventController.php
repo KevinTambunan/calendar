@@ -18,7 +18,7 @@ class EventController extends Controller
     {
         $header = "Get all data success!";
         $code = "400";
-        $data = new EventCollection(Event::paginate(10));
+        $data = new EventCollection(Event::paginate(7));
 
         return Inertia::render('Calendar', [
             "Code" => $code,
@@ -116,5 +116,16 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    /**
+     * get Events.
+     *
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function events()
+    {
+        return Inertia::render('Event');
     }
 }

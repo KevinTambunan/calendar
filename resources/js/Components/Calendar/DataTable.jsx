@@ -40,7 +40,7 @@ const rowTable = (datas) => {
 const DataTable = ({ datas }) => {
     // console.log(datas)
     return (
-        <div className="overflow-x-auto w-full p-10">
+        <div className="overflow-x-auto w-full pl-10 pr-10 pt-3 pb-3">
             <table className="table w-full">
                 <thead>
                     <tr>

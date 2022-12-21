@@ -1,158 +1,56 @@
-import React from "react";
-import { Head } from "@inertiajs/inertia-react";
-import Table from "@/Components/Event/Table";
+import {React, useState} from "react";
+import Alert from "@/Components/Calendar/Alert";
+import { DemoApp } from "@/Components/Calendar/Calendar";
+import Item from "@/Components/Dashboard/Item";
+import { Link } from "@inertiajs/inertia-react";
 
-const Event = () => {
+
+const Events = (props) => {
+    const [message, setMessage] = useState(props.flash.message)
+    // console.log(props)
+    const setWaktu = () => {
+        setTimeout(() => {
+            setMessage(null)
+        }, 10000)
+    }
+
     return (
-        <div>
-            <Head title="Events"/>
-            <div className="overflow-x-auto w-full">
-            <table className="table w-full">
-                <thead>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
+        <>
+            <div className="flex h-screen">
+                <div className="w-72 min-h-screen bg-slate-800 text-slate-300 p-5">
+                    <div className="flex gap-20">
+                        <h1 className="text-3xl justify-center text-white">Events.</h1>
+                        <div className="justify-end dropdown dropdown-end ">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    {/* <img src="https://placeimg.com/80/80/people" /> */}
+                                </div>
                             </label>
-                        </th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">Hart Hagerty</div>
-                                    <div className="text-sm opacity-50">United States</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Zemlak, Daniel and Leannon
-                            <br />
-                            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">Brice Swyre</div>
-                                    <div className="text-sm opacity-50">China</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Carroll Group
-                            <br />
-                            <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-                        </td>
-                        <td>Red</td>
-                        <th>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">Marjy Ferencz</div>
-                                    <div className="text-sm opacity-50">Russia</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Rowe-Schoen
-                            <br />
-                            <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-                        </td>
-                        <td>Crimson</td>
-                        <th>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">Yancy Tear</div>
-                                    <div className="text-sm opacity-50">Brazil</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Wyman-Ledner
-                            <br />
-                            <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-                        </td>
-                        <td>Indigo</td>
-                        <th>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                        <th></th>
-                    </tr>
-                </tfoot>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <a className="justify-between">
+                                        Profile
+                                        <span className="badge">New</span>
+                                    </a>
+                                </li>
+                                <li><a>Settings</a></li>
+                                <li><a>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <Item />
+                </div>
 
-            </table>
-        </div>
-        </div>
+                <div className="flex-1 min-h-screen w-full">
+                    <div className="flex-1 p-2">
+                        <DemoApp />
+                    </div>
+                </div>
+
+            </div>
+
+        </>
     )
 }
 
-export default Event;
+export default Events
